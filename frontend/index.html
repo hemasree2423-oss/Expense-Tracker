@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        <p>Manage your income and expenses</p>
+
+        <div class="summary">
+            <div class="card">
+                <h3>Total Balance</h3>
+                <h2 id="balance">₹0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Total Income</h3>
+                <h2 id="income">₹0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Total Expenses</h3>
+                <h2 id="expenses">₹0</h2>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 id="formHeading">Add Transaction</h2>
+
+            <form id="transactionForm">
+                <input type="text" id="title" placeholder="Title" required>
+
+                <input type="number" id="amount"
+                       placeholder="Amount" min="0.01" step="0.01" required>
+
+                <select id="type" required>
+                    <option value="INCOME">Income</option>
+                    <option value="EXPENSE">Expense</option>
+                </select>
+
+                <input type="text" id="category"
+                       placeholder="Category" required>
+
+                <input type="date" id="date" required>
+
+                <input type="text" id="description"
+                       placeholder="Description">
+
+                <button type="submit" id="submitButton">Add Transaction</button>
+                <button type="button" id="cancelButton" style="display:none;">Cancel Edit</button>
+        </div>
+
+        <div class="charts">
+            <div class="chart-card">
+                <h2>Income vs Expenses</h2>
+                <canvas id="incomeExpenseChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h2>Expenses by Category</h2>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+
+        <div class="transactions">
+            <h2>Transaction History</h2>
+                <div class="filters">
+                <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by title...">
+
+            <select id="typeFilter">
+                <option value="ALL">All Transactions</option>
+                <option value="INCOME">Income</option>
+                <option value="EXPENSE">Expense</option>
+            </select>
+
+            <input
+                type="text"
+                id="categoryFilter"
+                placeholder="Filter by category..."
+            >
+        </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="transactionList">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</html>
